@@ -16,9 +16,14 @@ public class HousePrices extends Users {
     // -> Attributes
     private int price;
 
-    public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax,int price) {
+    public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
         super(username, whichCondtiton, houseType, roomCount, downPayment, longTerm, statesTax);
-        this.price=price;
+        roomCountToPrice();
+        conditionToPrice();
+        houseTypeToPrice();
+        calculateTax();
+
+
 
 
     }
@@ -90,13 +95,13 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
     public void roomCountToPrice(){
-        price =10000;
+        price =0;
         switch (getRoomCount()){
-            case 1: price += 10000;
-            case 2: price += 20000;
-            case 3: price += 30000;
-            case 4: price += 40000;
-            case 5: price += 50000;
+            case 1: price += 20000;
+            case 2: price += 30000;
+            case 3: price += 40000;
+            case 4: price += 50000;
+            case 5: price += 60000;
         }
     }
     //--------------------------------------------------------------
@@ -188,7 +193,7 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
 
-    public int getPrice() {
+    public int getPriceTotal() {
         return price;
     }
 
@@ -212,8 +217,10 @@ public class HousePrices extends Users {
     // -> Method
 
     public int getPriceEachMonth(){
+        int aylikUcret;
+        aylikUcret = (price-getLongTerm())/getLongTerm();
 
-        return
+        return aylikUcret;
     }
     //--------------------------------------------------------------
 
