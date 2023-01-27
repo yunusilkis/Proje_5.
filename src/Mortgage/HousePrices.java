@@ -19,6 +19,7 @@ public class HousePrices extends Users {
     public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
         super(username, whichCondtiton, houseType, roomCount, downPayment, longTerm, statesTax);
 
+
     }
     //--------------------------------------------------------------
 

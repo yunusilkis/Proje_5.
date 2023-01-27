@@ -2,10 +2,10 @@ package Mortgage;
 
 public enum StatesTax {
 
-    NEWYORK,
-    NEWJERSEY,
-    FLORIDA,
-    OHIO
+    NEWYORK(20),
+    NEWJERSEY(15),
+    FLORIDA(5),
+    OHIO(12);
     /*
 
         StatesTax class i bir "enum class"tir ve bizim tax (vergi) lerimi belirleyecektir.
@@ -48,10 +48,18 @@ public enum StatesTax {
     //--------------------------------------------------------------
     // -> Attributes
     //--------------------------------------------------------------
-
+        private int tax;
     //--------------------------------------------------------------
     // -> Constructor
     //--------------------------------------------------------------
+
+    StatesTax(int tax) {
+        this.tax = tax;
+    }
+
+    public int getTax() {
+        return tax;
+    }
 
     //--------------------------------------------------------------
     // -> Method
