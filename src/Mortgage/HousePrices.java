@@ -16,8 +16,9 @@ public class HousePrices extends Users {
     // -> Attributes
     private int price;
 
-    public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
+    public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax,int price) {
         super(username, whichCondtiton, houseType, roomCount, downPayment, longTerm, statesTax);
+        this.price=price;
 
 
     }
@@ -88,6 +89,16 @@ public class HousePrices extends Users {
 
     //--------------------------------------------------------------
     // -> Method
+    public void roomCountToPrice(){
+        price =10000;
+        switch (getRoomCount()){
+            case 1: price += 10000;
+            case 2: price += 20000;
+            case 3: price += 30000;
+            case 4: price += 40000;
+            case 5: price += 50000;
+        }
+    }
     //--------------------------------------------------------------
 
     /*
@@ -109,6 +120,17 @@ public class HousePrices extends Users {
 
     //--------------------------------------------------------------
     // -> Method
+    public void conditionToPrice(){
+        switch (getWhichCondtiton()){
+            case "new" : price+=50000;
+            case "like new" : price+=40000;
+            case "old" : price += 30000;
+            case "renew required" : price += 15000;
+        }
+
+
+
+    }
     //--------------------------------------------------------------
 
     /*
@@ -126,6 +148,14 @@ public class HousePrices extends Users {
 
     //--------------------------------------------------------------
     // -> Method
+    public void houseTypeToPrice(){
+        switch (getHouseType()){
+            case "apartment" : price += 20000;
+            case "condo" : price += 30000;
+            case "house" : price += 40000;
+        }
+
+    }
     //--------------------------------------------------------------
 
    /*
@@ -140,6 +170,12 @@ public class HousePrices extends Users {
 
     //--------------------------------------------------------------
     // -> Method
+    public void calculateTax(){
+        int tax = (price* getStatesTax().getTax()*100);
+
+
+
+    }
     //--------------------------------------------------------------
 
 
@@ -151,6 +187,12 @@ public class HousePrices extends Users {
 
     //--------------------------------------------------------------
     // -> Method
+
+    public int getPrice() {
+        return price;
+    }
+
+
     //--------------------------------------------------------------
 
 
@@ -162,12 +204,17 @@ public class HousePrices extends Users {
         -Parametreye gerek yok.
 
 
-        Ay başına düşen toplam ücret hesaplanirken, int longTerm yani vade süresine bölmeliyiz, tabi onden önce de
+        Ay başına düşen toplam ücret hesaplanirken, int longTerm yani vade süresine bölmeliyiz, tabi ondan önce de
         peşinati ana paradan cikarmayi unutmayalim... (peşinat = downPayment)
 
     */
     //--------------------------------------------------------------
     // -> Method
+
+    public int getPriceEachMonth(){
+
+        return
+    }
     //--------------------------------------------------------------
 
 
