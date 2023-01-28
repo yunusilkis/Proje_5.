@@ -18,15 +18,16 @@ public class HousePrices extends Users {
 
     public HousePrices(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
         super(username, whichCondtiton, houseType, roomCount, downPayment, longTerm, statesTax);
-        roomCountToPrice();
-        conditionToPrice();
-        houseTypeToPrice();
-        calculateTax();
-
-
-
-
+        this.roomCountToPrice();
+        this.conditionToPrice();
+        this.houseTypeToPrice();
+        this.calculateTax();
     }
+
+
+
+
+
     //--------------------------------------------------------------
 
 
@@ -95,15 +96,27 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
     public void roomCountToPrice(){
-        price =0;
-        switch (getRoomCount()){
-            case 1: price += 20000;
-            case 2: price += 30000;
-            case 3: price += 40000;
-            case 4: price += 50000;
-            case 5: price += 60000;
+        this.price =0;
+        switch (getRoomCount()) {
+            case 0: this.price  +=10000;
+               break;
+            case 1 : this.price += 20000;
+                break;
+            case 2 : this.price += 30000;
+                break;
+            case 3 : this.price += 40000;
+                break;
+            case 4 : this.price += 50000;
+                break;
+            case 5 : this.price += 60000;
+                break;
+
         }
     }
+
+
+
+
     //--------------------------------------------------------------
 
     /*
@@ -126,11 +139,15 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
     public void conditionToPrice(){
-        switch (getWhichCondtiton()){
-            case "new" : price+=50000;
-            case "like new" : price+=40000;
-            case "old" : price += 30000;
-            case "renew required" : price += 15000;
+        switch (this.getWhichCondtiton()){
+            case "new" :this. price+=50000;
+            break;
+            case "LikeNew" : this.price+=40000;
+            break;
+            case "Old" : this.price += 30000;
+            break;
+            case "Renew Required" : this.price += 15000;
+            break;
         }
 
 
@@ -154,10 +171,13 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
     public void houseTypeToPrice(){
-        switch (getHouseType()){
-            case "apartment" : price += 20000;
-            case "condo" : price += 30000;
-            case "house" : price += 40000;
+        switch (this.getHouseType()){
+            case "Apartment" : this.price += 20000;
+            break;
+            case "condo" : this.price += 30000;
+            break;
+            case "House" :this. price += 40000;
+            break;
         }
 
     }
@@ -176,7 +196,7 @@ public class HousePrices extends Users {
     //--------------------------------------------------------------
     // -> Method
     public void calculateTax(){
-        int tax = (price* getStatesTax().getTax()*100);
+      this.price +=  (this.price* this.getStatesTax().getTax())/100;
 
 
 
@@ -217,10 +237,9 @@ public class HousePrices extends Users {
     // -> Method
 
     public int getPriceEachMonth(){
-        int aylikUcret;
-        aylikUcret = (price-getLongTerm())/getLongTerm();
+        int total = this.price-this.getDownPayment();
+        return total/getLongTerm();
 
-        return aylikUcret;
     }
     //--------------------------------------------------------------
 

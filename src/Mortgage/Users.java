@@ -41,13 +41,13 @@ public class Users {
     // -> Constructor
 
     public Users(String username, String whichCondtiton, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
-        setUsername(username);
-        setDownPayment(downPayment);
-        setLongTerm(longTerm);
-        setHouseType(houseType);
-        setRoomCount(roomCount);
-        setStatesTax(statesTax);
-        setWhichCondtiton(whichCondtiton);
+        this.username = username;
+        this.whichCondtiton = whichCondtiton;
+        this.houseType = houseType;
+        this.roomCount = roomCount;
+        this.downPayment = downPayment;
+        this.longTerm = longTerm;
+        this.statesTax = statesTax;
     }
 
 
